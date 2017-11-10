@@ -1,0 +1,17 @@
+{
+  "name": "chaskills-main-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/hungnn0790/chaskills-main-node.git",
+  "author": "hungnn",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "moment": "^2.19.1",
+    "mongoose": "^4.13.0",
+    "morgan": "^1.9.0"
+  }
+}
