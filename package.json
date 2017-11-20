@@ -5,6 +5,9 @@
   "repository": "https://github.com/hungnn0790/chaskills-main-node.git",
   "author": "hungnn",
   "license": "MIT",
+  "scripts": {
+    "start": "node src/server.js"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
