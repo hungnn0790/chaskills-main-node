@@ -39,12 +39,14 @@ const signin = (req, res) => {
 			return res.status(401).json({ message: 'Invalid email/password' });
 		}
 
-		user.comparePwd(req.body.password, (err, isMatch) => {
+		user.comparePwd(req.body.password).then(function (isMatch) {
 			if (!isMatch) {
 				return res.status(401).json({ message: "Invalid email/password" });
 			}
 
 			res.json({ message: 'You are now logged in', token: createToken(user.first_name)});
+		}).catch(function (err) {
+			// Error handling.
 		});
 	}).catch(function (err) {
 		// Error handling.

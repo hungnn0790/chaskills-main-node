@@ -22,9 +22,15 @@ userSchema.pre('save', function (next) {
 	});
 });
 
-userSchema.methods.comparePwd = function (password, done) {
-	bcrypt.compare(password, this.password, (err, isMatch) => {
-		done(err, isMatch);
+userSchema.methods.comparePwd = function (password) {
+	return new Promise((resolve, reject) => {
+		bcrypt.compare(password, this.password, (err, isMatch) => {
+			if (err) {
+				reject(err);
+			} else {
+				resolve(isMatch);
+			}
+		});
 	});
 }
 
