@@ -22,8 +22,8 @@ const signup = (req, res) => {
 		const user = Object.assign(new User(), req.body);
 		user.save().then(function (result) {
 			res.json({
-				message: 'Welcome to Retrogames, you are now logged in',
-				token: createToken(result.name)
+				message: 'Welcome to Chaskills, you are now logged in',
+				token: createToken(result.first_name)
 			});
 		}).catch(function (err) {
 			// Error handling.
@@ -33,5 +33,23 @@ const signup = (req, res) => {
 	});
 };
 
+const signin = (req, res) => {
+	User.findOne({ email: req.body.email }, '+password').exec().then(function (user) {
+		if (!user) {
+			return res.status(401).json({ message: 'Invalid email/password' });
+		}
+
+		user.comparePwd(req.body.password, (err, isMatch) => {
+			if (!isMatch) {
+				return res.status(401).json({ message: "Invalid email/password" });
+			}
+
+			res.json({ message: 'You are now logged in', token: createToken(user.first_name)});
+		});
+	}).catch(function (err) {
+		// Error handling.
+	});
+}
+
 // Export the functions for server.js
-module.exports = Object.assign({}, { signup });;
+module.exports = Object.assign({}, { signup, signin });
