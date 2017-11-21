@@ -8,7 +8,7 @@ const createToken = name => {
 		sub: name,
 		exp: moment().add(1, 'day').unix()
 	};
-	return jwt.sign(payload, config.authenticationSettings.tokenSecret);
+	return jwt.sign(payload, config.authentication.tokenSecret);
 }
 
 // signup function for the /auth/signup route

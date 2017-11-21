@@ -14,6 +14,10 @@ var userSchema = new Schema({
 userSchema.pre('save', function (next) {
 	var user = this;
 
+	if (!this.created_at) {
+		this.created_at = new Date();
+	}
+
 	bcrypt.genSalt(10, function (err, salt) {
 		bcrypt.hash(user.password, salt, function (err, hash) {
 			user.password = hash;
