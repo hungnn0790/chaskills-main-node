@@ -1,3 +1,13 @@
-const { authenticationSettings, serverSettings, dbSettings } = require('./config');
+const { 
+	env,
+	ip,
+	port,
+	db
+} = require('./config');
 
-module.exports = Object.assign({}, { authenticationSettings, serverSettings, dbSettings });
+module.exports = Object.assign({}, { 
+	env,
+	ip,
+	port,
+	db
+});

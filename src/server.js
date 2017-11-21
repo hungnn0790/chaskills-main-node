@@ -7,7 +7,7 @@ const app = express();
 const { signup, login } = require('./routes/user');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(config.dbSettings.server, config.dbSettings.options);
+mongoose.connect(config.db.host + config.db.name, config.db.options);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -31,6 +31,6 @@ app.use((req, res, next) => {
 app.post('/auth/signup', signup);
 app.post('/auth/login', login);
 
-app.listen(config.serverSettings.port);
+app.listen(config.port);
 
-console.log(`listening on port ${config.serverSettings.port}`);
+console.log(`listening on port ${config.port}`);
