@@ -2,12 +2,14 @@ const {
 	env,
 	ip,
 	port,
-	db
+	db,
+	authentication
 } = require('./config');
 
 module.exports = Object.assign({}, { 
 	env,
 	ip,
 	port,
-	db
+	db,
+	authentication
 });
