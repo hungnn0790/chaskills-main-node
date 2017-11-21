@@ -1,3 +1,3 @@
-const { authenticationSettings, serverSettings } = require('./config');
+const { authenticationSettings, serverSettings, dbSettings } = require('./config');
 
-module.exports = Object.assign({}, { authenticationSettings, serverSettings });
+module.exports = Object.assign({}, { authenticationSettings, serverSettings, dbSettings });

@@ -33,7 +33,7 @@ const signup = (req, res) => {
 	});
 };
 
-const signin = (req, res) => {
+const login = (req, res) => {
 	User.findOne({ email: req.body.email }, '+password').exec().then(function (user) {
 		if (!user) {
 			return res.status(401).json({ message: 'Invalid email/password' });
@@ -54,4 +54,4 @@ const signin = (req, res) => {
 }
 
 // Export the functions for server.js
-module.exports = Object.assign({}, { signup, signin });
+module.exports = Object.assign({}, { signup, login });
